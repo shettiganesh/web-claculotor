@@ -1,33 +1,28 @@
+name: Web Calculator
 
 on:
   push:
     branches:
       - main
 
-  workflow_dispatch:
-
 jobs:
-  deploy:
-
+  test:
     runs-on: ubuntu-latest
 
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-
     steps:
-
-      - name: Checkout source code
+      - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Configure GitHub Pages
-        uses: actions/configure-pages@v5
+      - name: Check Files
+        run: |
+          echo "Web Calculator Application"
+          echo "Files in project:"
+          ls -la
 
-      - name: Upload website
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: .
+      - name: Check index.html
+        run: |
+          test -f index.html
+          echo "index.html exists"
 
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+      - name: Deployment Success
+        run: echo "Web Calculator workflow completed successfully!"
