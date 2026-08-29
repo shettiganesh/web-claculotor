@@ -1,5 +1,5 @@
 # Stage 1 - Build
-FROM maven:3.9-eclipse-temurin-17 AS builder
+FROM maven:3.9-eclipse-temurin-17 AS build
 
 WORKDIR /app
 
@@ -17,7 +17,7 @@ ADD https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.120/bin/apache-tomcat-9.0.120.
 RUN tar -xzf apache-tomcat-9.0.120.tar.gz && \
     mv apache-tomcat-9.0.120 tomcat
 
-COPY --from=builder /app/target/*.war /app/tomcat/webapps/
+COPY --from=build /app/target/*.war /app/tomcat/webapps/
 
 EXPOSE 8080
 
