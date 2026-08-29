@@ -20,7 +20,7 @@ jobs:
 
       - name : list
         run: docker ps -a
-      - name: Start Application
+   
 
       - name: CURL 200 Status Check
         run: |
