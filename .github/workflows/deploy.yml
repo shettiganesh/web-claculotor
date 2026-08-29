@@ -16,7 +16,7 @@ jobs:
         run: docker build -t web-calaculator .
 
       - name: container run
-        run: docker run -dt --name web-calaculator -p 8080:80 web-calaculator
+        run: docker run -dt --name web-calaculator -p 8080:8080 web-calaculator
 
       - name : list
         run: docker ps -a
