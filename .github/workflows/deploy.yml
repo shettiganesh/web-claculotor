@@ -35,7 +35,20 @@ jobs:
           echo "CURL request failed - HTTP $STATUS"
           exit 1
           fi
-        
+  success_notification:
+    needs: test
+    if: success()
+    runs-on: ubuntu-latest
+    steps:
+      - name:  success
+        run: echo "success mail sent to team"
+  failure_notification:
+    needs: test
+    if: failure()
+    runs-on: ubuntu-latest
+    steps:
+      - name: failure
+        run: echo "failure mail sent to team"  
 
         
         
