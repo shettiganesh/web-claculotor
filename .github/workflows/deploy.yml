@@ -21,9 +21,6 @@ jobs:
       - name : list
         run: docker ps -a
       - name: Start Application
-        run: |
-           python3 -m http.server 8080 > server.log 2>&1 &
-           sleep 3
 
       - name: CURL 200 Status Check
         run: |
