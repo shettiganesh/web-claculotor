@@ -20,15 +20,19 @@ jobs:
 
       - name : list
         run: docker ps -a
+      - name: Start Application
+        run: |
+           python3 -m http.server 8080 > server.log 2>&1 &
+           sleep 3
 
       - name: CURL 200 Status Check
         run: |
           STATUS=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:8080)
           echo "HTTP Status Code: $STATUS"
           if [ "$STATUS" -eq 200 ]; then
-          echo "✅ CURL request successful - HTTP 200"
+          echo " CURL request successful - HTTP 200"
           else
-          echo "❌ CURL request failed - HTTP $STATUS"
+          echo "CURL request failed - HTTP $STATUS"
           exit 1
           fi
         
