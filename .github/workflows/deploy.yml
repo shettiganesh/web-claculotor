@@ -1,7 +1,7 @@
 name: Web Calculator
 
 on:
-  workflow_dispatch
+  push: 
 
 jobs:
   test:
